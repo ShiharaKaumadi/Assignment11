@@ -257,7 +257,6 @@ body{
 
 
 /* Extra Small <= 576px */
-
 @media screen and (max-width: 576px) {
     .header-left {
         display: none;

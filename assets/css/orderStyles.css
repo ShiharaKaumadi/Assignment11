@@ -1,41 +1,49 @@
-form {
+#invoice, #items, #payment{
     top:90px;
     border: 1px solid blue;
     border-radius: 10px;
     padding: 30px;
+    color: black;
 
 }
 
-input[type="text"], input[type="date"],
-textarea {
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-control::placeholder{
+    color: #b2b3b4;
+}
+
+#orderId,#customer-id, #customer-name, #customer-address, #customer-salary,#order-date,#item-code,#item-name,#unit-price, #qty-on-hand,#qty,#total,#cash,#balance,#no-items {
     width:1fr;
     height: 30px;
-    padding: 9px;
+    padding: 5px;
     border: 1px solid blue;
+    color: black;
 }
+
+
 
 #customer-salary {
     width: 1fr;
     padding: 9px;
 }
 
-#customer-salary,
-#order-id,
-#customer-id {
-    text-transform: uppercase;
-    padding:9px;
-}
 
-#order-id,
+
+#orderId,
 #customer-id {
     width: 1fr;
-    padding:9px;
+    padding:2px;
+    color: black;
 
 }
 
 label {
     display: block;
-    padding:9px;
+    padding:4px;
     color:black;
     font-size: 13px;
 }
@@ -49,6 +57,7 @@ label {
     height: 50px;
     resize: none;
     padding:9px;
+    border: 1px solid blue;
 }
 
 #order-date {
@@ -56,18 +65,7 @@ label {
     padding:9px;
 }
 
-.form-group:last-child {
-    margin-bottom: 0;
-}
 
-.form-group + .form-group {
-    margin-top: 10px;
-}
-
-.form-group + .form-group label {
-    margin-top: 10px;
-
-}
 
 .add-to-cart{
     width:130px;

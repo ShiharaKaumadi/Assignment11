@@ -175,9 +175,7 @@ body{
 .container {
     margin-top: 20px;
 }
-.add-button {
-    margin-bottom: 20px;
-}
+
 .search-bar {
     margin-bottom: 20px;
 }
@@ -189,23 +187,7 @@ body{
     width:450px;
     align-items:self-end ;
 }
-.register-form, .edit-form {
-    position: center;
 
-    border: 1px solid blue;
-    border-radius: 10px;
-    display: none;
-    position: fixed;
-    transform: translate(-50%, -50%);
-    width: 350px;
-    height: 800px;
-    padding: 5px;
-    background-color: #fff;
-
-    box-shadow: 0 0 10px rgba(206, 201, 201, 0.2);
-    z-index: 9999;
-    color:black;
-}
 /*Main content*/
 .main-container{
     grid-area: main;
