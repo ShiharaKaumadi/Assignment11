@@ -1,33 +1,42 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    formDetails();
-    getPreviousOrderId();
+    console.log('DOM');
+    const orderIdField = document.getElementById('orderId');
+    /*orderIdField.removeAttribute('readOnly');*/
+    const lastOrderId = getPreviousOrderId(); // Function to get the last order ID
+    console.log('lastOrderId ay bn ennaththe');
+    orderIdField.setAttribute('value', lastOrderId);
+    orderIdField.value = lastOrderId;
+    console.log('orderId=' + lastOrderId);
     orderDateDetails();
     // Event listener for input changes in idInput field
     var idInput = document.getElementById('customerId');
     idInput.addEventListener('input', fillFieldsById);
+
+    function orderDateDetails(){
+        const orderDateField = document.getElementById('orderDate');
+
+        const currentDate = getCurrentDate();
+        orderDateField.setAttribute('value', currentDate);
+        orderDateField.value = currentDate;
+        console.log(currentDate);
+
+        function getCurrentDate() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            return `${month}/${day}/${year}`;
+        }
+
+
+    }
 });
-
-//To access the event listener function defined within addEventListener outside of its scope,
-function formDetails() {
-    console.log('ahenwada gahena hadawatha mage');
-
-    const orderIdField = document.getElementById('orderId');
-    orderIdField.removeAttribute('readOnly');
-
-    const lastOrderId = getPreviousOrderId(); // Function to get the last order ID
-    console.log('lastOrderId ay bn uba ennaththe');
-
-    orderIdField.setAttribute('value', lastOrderId);
-    orderIdField.value = lastOrderId;
-    console.log('orderId=' + lastOrderId);
-
-
-}
+let invoiceDetails = [];
 // Function to get the last order ID
 function getPreviousOrderId() {
     console.log('Ane call weyan mala wade')
-    const lastOrderId = invoiceDetails.length > 0 ? invoiceDetails[invoiceDetails.length - 1].id : 'O000';
+    const lastOrderId = placeOrderData.length > 0 ? placeOrderData[placeOrderData.length - 1].id : 'O000';
     if (typeof lastOrderId === 'string') {
         console.log('Mn if eka athule')
         const newIdNumber = parseInt(lastOrderId.substring(1)) + 1;
@@ -41,24 +50,7 @@ function getPreviousOrderId() {
         return 'O001'; // Default ID
     }
 }
-function orderDateDetails(){
-    const orderDateField = document.getElementById('orderDate');
 
-    const currentDate = getCurrentDate();
-    orderDateField.setAttribute('value', currentDate);
-    orderDateField.value = currentDate;
-    console.log(currentDate);
-
-    function getCurrentDate() {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = (now.getMonth() + 1).toString().padStart(2, '0');
-        const day = now.getDate().toString().padStart(2, '0');
-        return `${month}/${day}/${year}`;
-    }
-
-
-}
 
 var customers = localStorage.getItem("customerDetails");
 var customersArray = JSON.parse(customers);
@@ -297,10 +289,25 @@ function placeOrder(event){
     placeOrderData.push(placeOrderValues);
     localStorage.setItem('placeOrderData', JSON.stringify(placeOrderData)); // Update local storage
     alert('Order Placed Successfully');
-    document.getElementById('payment-total').value='';
-    document.getElementById('cash').value='';
-    document.getElementById('no-items').value='';
-    document.getElementById('balance').value='';
+
+
+    /*orderIdField.removeAttribute('readOnly');*/
+    let len = placeOrderData.length;
+    let previousOrderId =placeOrderData[len-1].oId;
+    console.log('Mn if eka athule')
+    const newIdNumber = parseInt(previousOrderId.substring(1)) + 1;
+    let newOId = `O${newIdNumber.toString().padStart(3, '0')}`;
+    console.log(previousOrderId);
+    console.log(newOId);
+    document.getElementById('orderId').value = newOId;
+    document.getElementById('payment-total').value = '';
+    document.getElementById('cash').value = '';
+    document.getElementById('no-items').value = '';
+    document.getElementById('balance').value = '';
+    document.getElementById('customerName').value = '';
+    document.getElementById('customerId').value = '';
+    document.getElementById('customerAddress').value = '';
+    document.getElementById('customerSalary').value = '';
 
     // Retrieve the current records array from local storage
     var records = JSON.parse(localStorage.getItem('records')) || [];
