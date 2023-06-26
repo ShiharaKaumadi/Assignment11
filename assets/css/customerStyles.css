@@ -180,7 +180,7 @@ body{
 
 #entryForm input[type="text"],#entryForm input[type="email"],#entryForm input[type="number"], #entryForm input[type="tel"],
 #editEntryForm input[type="text"],#editEntryForm input[type="email"],#editEntryForm input[type="number"], #editEntryForm input[type="tel"]{
-    width:310px;
+    width:240px;
     height: 30px;
     padding: 10px;
     border-radius: 5px;
